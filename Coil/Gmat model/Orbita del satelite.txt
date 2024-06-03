@@ -1,0 +1,23 @@
+Órbita del satélite
+Para la construcción y observación 
+en tiempo real de la órbita que seguiría el CubeSat una vez lanzado,
+ se hizo uso del software General Mission Analysis Tool (GMAT) desarrollado por la NASA. 
+Este software permite modelar, optimizar y estimar las trayectorias que seguiría una nave espacial
+ a partir de diversos parámetros dados como entradas y que se pueden modificar interactivamente. 
+En relación con la órbita deseada para el proyecto, se diseñó una en la que se priorizo el paso 
+constante del CubeSat por la zona de interés (departamento del Cesar) sobre las implicaciones 
+técnicas e ingenieriles que conlleva colocar el satélite en una órbita de tipo ecuatorial. 
+Los elementos o parámetros orbitales quedaron de la siguiente forma:
+-	SMA: 7200 KM.
+-	ECC: 0.02
+-	INC: 10.46°
+-	RAAN: 285°
+-	AOP: 0
+-	TA: 0
+
+Como breve explicación se tiene que el SMA fue puesto con un valor de 7200 KM porque es una altura que deriva en una orbita media/baja que resulta beneficioso debido a que el satélite puede darle varias vueltas a la tierra al día, lo que significa que pasa en varias ocasiones por la zona de interés. Esto también implica que la excentricidad de la órbita sea baja, lo que  significa que es una orbita con forma circular (de ahí que el parámetro ECC tenga un valor pequeño). INC se puso en 10.46° dado que es un valor que corresponde a una latitud dentro del departamento del Cesar. El RAAN de 285° para tener certeza de que la órbita pasará por territorio colombiano y, por último, AOP y TA quedaron con un valor de 0 que es su valor por defecto en GMAT. 
+
+Se simulo que hubiera una estación terrestre ubicada a las afueras de la ciudad de Valledupar con el objetivo de que la información captada por los instrumentos del CubeSat fueran enviados a esta estación cada vez que el satélite pudiera ponerse en contacto con la misma. Al correr la simulación con un tiempo de misión de 5 días se obtuvieron en promedio 60 contactos entre el CubeSat y la estación a tierra en ese periodo de tiempo. Asimismo, al ejecutar la simulación para una misión con duración de 15 días se lograron tener aproximadamente 180 contactos. Esto deriva en que para la misión real se tendría que en un mes el CubeSat y la estación terrestre entrarían en contacto unas 360 veces en promedio, lo que arroja 4320 contactos anuales aproximadamente. La duración de esos contactos sería de unos 600 segundos en promedio, es decir, de 10 minutos. Este tiempo de contacto sería suficiente para enviar la información del satélite a la estación dados los valores tan altos en las tasas de transmisión de datos que se tienen actualmente. 
+
+Latitud – 10.46
+Longitud - -73.31
