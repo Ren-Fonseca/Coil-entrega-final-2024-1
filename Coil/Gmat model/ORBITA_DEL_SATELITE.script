@@ -1,0 +1,218 @@
+%General Mission Analysis Tool(GMAT) Script
+%Created: 2024-06-02 17:40:36
+
+
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+
+Create Spacecraft CubeSat;
+GMAT CubeSat.DateFormat = UTCGregorian;
+GMAT CubeSat.Epoch = '01 Jan 2000 11:59:28.000';
+GMAT CubeSat.CoordinateSystem = EarthMJ2000Eq;
+GMAT CubeSat.DisplayStateType = Keplerian;
+GMAT CubeSat.SMA = 7191.938817629012;
+GMAT CubeSat.ECC = 0.0245497490059803;
+GMAT CubeSat.INC = 10.45999999999999;
+GMAT CubeSat.RAAN = 285;
+GMAT CubeSat.AOP = 0;
+GMAT CubeSat.TA = 8.537736462515939e-07;
+GMAT CubeSat.DryMass = 850;
+GMAT CubeSat.Cd = 2.2;
+GMAT CubeSat.Cr = 1.8;
+GMAT CubeSat.DragArea = 15;
+GMAT CubeSat.SRPArea = 1;
+GMAT CubeSat.SPADDragScaleFactor = 1;
+GMAT CubeSat.SPADSRPScaleFactor = 1;
+GMAT CubeSat.AtmosDensityScaleFactor = 1;
+GMAT CubeSat.ExtendedMassPropertiesModel = 'None';
+GMAT CubeSat.NAIFId = -10001001;
+GMAT CubeSat.NAIFIdReferenceFrame = -9001001;
+GMAT CubeSat.OrbitColor = Red;
+GMAT CubeSat.TargetColor = Teal;
+GMAT CubeSat.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+GMAT CubeSat.CdSigma = 1e+70;
+GMAT CubeSat.CrSigma = 1e+70;
+GMAT CubeSat.Id = 'SatId';
+GMAT CubeSat.Attitude = CoordinateSystemFixed;
+GMAT CubeSat.SPADSRPInterpolationMethod = Bilinear;
+GMAT CubeSat.SPADSRPScaleFactorSigma = 1e+70;
+GMAT CubeSat.SPADDragInterpolationMethod = Bilinear;
+GMAT CubeSat.SPADDragScaleFactorSigma = 1e+70;
+GMAT CubeSat.AtmosDensityScaleFactorSigma = 1e+70;
+GMAT CubeSat.ModelFile = 'aura.3ds';
+GMAT CubeSat.ModelOffsetX = 0;
+GMAT CubeSat.ModelOffsetY = 0;
+GMAT CubeSat.ModelOffsetZ = 0;
+GMAT CubeSat.ModelRotationX = 0;
+GMAT CubeSat.ModelRotationY = 0;
+GMAT CubeSat.ModelRotationZ = 0;
+GMAT CubeSat.ModelScale = 1;
+GMAT CubeSat.AttitudeDisplayStateType = 'Quaternion';
+GMAT CubeSat.AttitudeRateDisplayStateType = 'AngularVelocity';
+GMAT CubeSat.AttitudeCoordinateSystem = EarthMJ2000Eq;
+GMAT CubeSat.EulerAngleSequence = '321';
+
+%----------------------------------------
+%---------- GroundStations
+%----------------------------------------
+
+Create GroundStation Estacion_Terreno_Valledupar;
+GMAT Estacion_Terreno_Valledupar.OrbitColor = Thistle;
+GMAT Estacion_Terreno_Valledupar.TargetColor = DarkGray;
+GMAT Estacion_Terreno_Valledupar.CentralBody = Earth;
+GMAT Estacion_Terreno_Valledupar.StateType = Spherical;
+GMAT Estacion_Terreno_Valledupar.HorizonReference = Ellipsoid;
+GMAT Estacion_Terreno_Valledupar.Location1 = 10.46;
+GMAT Estacion_Terreno_Valledupar.Location2 = 287.31;
+GMAT Estacion_Terreno_Valledupar.Location3 = 0.2;
+GMAT Estacion_Terreno_Valledupar.Id = 'StationId';
+GMAT Estacion_Terreno_Valledupar.IonosphereModel = 'None';
+GMAT Estacion_Terreno_Valledupar.TroposphereModel = 'None';
+GMAT Estacion_Terreno_Valledupar.DataSource = 'Constant';
+GMAT Estacion_Terreno_Valledupar.Temperature = 295.1;
+GMAT Estacion_Terreno_Valledupar.Pressure = 1013.5;
+GMAT Estacion_Terreno_Valledupar.Humidity = 55;
+GMAT Estacion_Terreno_Valledupar.MinimumElevationAngle = 10;
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------
+%---------- ForceModels
+%----------------------------------------
+
+Create ForceModel DefaultProp_ForceModel;
+GMAT DefaultProp_ForceModel.CentralBody = Earth;
+GMAT DefaultProp_ForceModel.PrimaryBodies = {Earth};
+GMAT DefaultProp_ForceModel.Drag = None;
+GMAT DefaultProp_ForceModel.SRP = Off;
+GMAT DefaultProp_ForceModel.RelativisticCorrection = Off;
+GMAT DefaultProp_ForceModel.ErrorControl = RSSStep;
+GMAT DefaultProp_ForceModel.GravityField.Earth.Degree = 4;
+GMAT DefaultProp_ForceModel.GravityField.Earth.Order = 4;
+GMAT DefaultProp_ForceModel.GravityField.Earth.StmLimit = 100;
+GMAT DefaultProp_ForceModel.GravityField.Earth.PotentialFile = 'JGM2.cof';
+GMAT DefaultProp_ForceModel.GravityField.Earth.TideModel = 'None';
+
+%----------------------------------------
+%---------- Propagators
+%----------------------------------------
+
+Create Propagator DefaultProp;
+GMAT DefaultProp.FM = DefaultProp_ForceModel;
+GMAT DefaultProp.Type = RungeKutta89;
+GMAT DefaultProp.InitialStepSize = 60;
+GMAT DefaultProp.Accuracy = 9.999999999999999e-12;
+GMAT DefaultProp.MinStep = 0.001;
+GMAT DefaultProp.MaxStep = 2700;
+GMAT DefaultProp.MaxStepAttempts = 50;
+GMAT DefaultProp.StopIfAccuracyIsViolated = true;
+
+%----------------------------------------
+%---------- EventLocators
+%----------------------------------------
+
+Create ContactLocator ContactLocator1;
+GMAT ContactLocator1.Target = CubeSat;
+GMAT ContactLocator1.Filename = 'ContactLocator1.txt';
+GMAT ContactLocator1.InputEpochFormat = 'TAIModJulian';
+GMAT ContactLocator1.InitialEpoch = '21545';
+GMAT ContactLocator1.StepSize = 10;
+GMAT ContactLocator1.FinalEpoch = '21545.138';
+GMAT ContactLocator1.UseLightTimeDelay = true;
+GMAT ContactLocator1.UseStellarAberration = true;
+GMAT ContactLocator1.WriteReport = true;
+GMAT ContactLocator1.RunMode = Automatic;
+GMAT ContactLocator1.UseEntireInterval = true;
+GMAT ContactLocator1.Observers = {Estacion_Terreno_Valledupar};
+GMAT ContactLocator1.LightTimeDirection = Transmit;
+GMAT ContactLocator1.LeftJustified = false;
+GMAT ContactLocator1.ReportPrecision = 6;
+GMAT ContactLocator1.ReportFormat = 'Legacy';
+GMAT ContactLocator1.IntervalStepSize = 0;
+GMAT ContactLocator1.ReportTimeFormat = 'UTCGregorian';
+
+%----------------------------------------
+%---------- Subscribers
+%----------------------------------------
+
+Create OrbitView DefaultOrbitView;
+GMAT DefaultOrbitView.SolverIterations = Current;
+GMAT DefaultOrbitView.UpperLeft = [ 0 0 ];
+GMAT DefaultOrbitView.Size = [ 0.5 0.45 ];
+GMAT DefaultOrbitView.RelativeZOrder = 531;
+GMAT DefaultOrbitView.Maximized = false;
+GMAT DefaultOrbitView.Add = {CubeSat, Earth};
+GMAT DefaultOrbitView.CoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.DrawObject = [ true true ];
+GMAT DefaultOrbitView.DataCollectFrequency = 1;
+GMAT DefaultOrbitView.UpdatePlotFrequency = 50;
+GMAT DefaultOrbitView.NumPointsToRedraw = 0;
+GMAT DefaultOrbitView.ShowPlot = true;
+GMAT DefaultOrbitView.MaxPlotPoints = 20000;
+GMAT DefaultOrbitView.ShowLabels = true;
+GMAT DefaultOrbitView.ViewPointReference = Earth;
+GMAT DefaultOrbitView.ViewPointVector = [ 30000 0 0 ];
+GMAT DefaultOrbitView.ViewDirection = Earth;
+GMAT DefaultOrbitView.ViewScaleFactor = 1;
+GMAT DefaultOrbitView.ViewUpCoordinateSystem = EarthMJ2000Eq;
+GMAT DefaultOrbitView.ViewUpAxis = Z;
+GMAT DefaultOrbitView.EclipticPlane = Off;
+GMAT DefaultOrbitView.XYPlane = On;
+GMAT DefaultOrbitView.WireFrame = Off;
+GMAT DefaultOrbitView.Axes = On;
+GMAT DefaultOrbitView.Grid = Off;
+GMAT DefaultOrbitView.SunLine = Off;
+GMAT DefaultOrbitView.UseInitialView = On;
+GMAT DefaultOrbitView.StarCount = 7000;
+GMAT DefaultOrbitView.EnableStars = On;
+GMAT DefaultOrbitView.EnableConstellations = On;
+
+Create GroundTrackPlot DefaultGroundTrackPlot;
+GMAT DefaultGroundTrackPlot.SolverIterations = Current;
+GMAT DefaultGroundTrackPlot.UpperLeft = [ 0 0.4423076923076923 ];
+GMAT DefaultGroundTrackPlot.Size = [ 0.5 0.45 ];
+GMAT DefaultGroundTrackPlot.RelativeZOrder = 522;
+GMAT DefaultGroundTrackPlot.Maximized = false;
+GMAT DefaultGroundTrackPlot.Add = {CubeSat, Estacion_Terreno_Valledupar};
+GMAT DefaultGroundTrackPlot.DataCollectFrequency = 1;
+GMAT DefaultGroundTrackPlot.UpdatePlotFrequency = 50;
+GMAT DefaultGroundTrackPlot.NumPointsToRedraw = 0;
+GMAT DefaultGroundTrackPlot.ShowPlot = true;
+GMAT DefaultGroundTrackPlot.MaxPlotPoints = 20000;
+GMAT DefaultGroundTrackPlot.CentralBody = Earth;
+GMAT DefaultGroundTrackPlot.TextureMap = 'ModifiedBlueMarble.jpg';
+
+Create ReportFile DefaultReportFile;
+GMAT DefaultReportFile.SolverIterations = Current;
+GMAT DefaultReportFile.UpperLeft = [ 0.08900523560209424 0.1961538461538462 ];
+GMAT DefaultReportFile.Size = [ 0.5977312390924956 0.7942307692307692 ];
+GMAT DefaultReportFile.RelativeZOrder = 502;
+GMAT DefaultReportFile.Maximized = false;
+GMAT DefaultReportFile.Filename = 'DefaultReportFile.txt';
+GMAT DefaultReportFile.Precision = 16;
+GMAT DefaultReportFile.WriteHeaders = true;
+GMAT DefaultReportFile.LeftJustify = On;
+GMAT DefaultReportFile.ZeroFill = Off;
+GMAT DefaultReportFile.FixedWidth = true;
+GMAT DefaultReportFile.Delimiter = ' ';
+GMAT DefaultReportFile.ColumnWidth = 23;
+GMAT DefaultReportFile.WriteReport = true;
+
+
+%----------------------------------------
+%---------- Mission Sequence
+%----------------------------------------
+
+BeginMissionSequence;
+While CubeSat.ElapsedDays < 15
+   Propagate DefaultProp(CubeSat) {CubeSat.ElapsedSecs = 12000};
+   Report DefaultReportFile CubeSat.UTCGregorian CubeSat.ElapsedDays CubeSat.Earth.Altitude;
+EndWhile;
