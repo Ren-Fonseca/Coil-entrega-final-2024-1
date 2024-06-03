@@ -1,0 +1,19 @@
+Modelo de CAPELLA
+El modelo de Capella desarrollado en el contexto de la presentación se centra en la creación de un sistema específico el cual en este caso se centra en el Cube-Sat. A continuación, se describen los componentes y aspectos clave del modelo según lo descrito en las diapositivas:
+1.	Contexto del Sistema:
+o	Actores y Roles: Se identifican los actores principales que interactúan con el sistema, como los usuarios y otros sistemas externos.
+o	Interacciones Operacionales: Se detallan las operaciones clave y las misiones del sistema, proporcionando una visión clara de los objetivos y las funciones operativas.
+2.	Análisis Funcional:
+o	Funciones Principales: Se definen las funciones esenciales del sistema.
+o	Flujo de Datos y Control: Se describe cómo se gestionan los datos dentro del sistema y cómo se controla el flujo de operaciones en el satelite.
+3.	Arquitectura Lógica:
+o	Componentes del Sistema: Se especifican los diferentes componentes lógicos del sistema, incluyendo sensores, actuadores, interfaces de usuario y módulos de comunicación.
+o	Relaciones y Dependencias: Se analizan las relaciones entre los componentes y cómo interactúan para cumplir con los requisitos del sistema.
+4.	Arquitectura Física:
+o	Implementación Física: Se detallan los componentes físicos y su disposición dentro del prototipo, como los sensores de peso, el controlador principal (ESP32 o Arduino), y los módulos de comunicación.
+o	Integración y Conectividad: Se muestra cómo se integran los componentes y cómo se aseguran las conexiones físicas y lógicas para una operación cohesiva.
+5.	Validación y Verificación:
+o	Pruebas y Evaluaciones: Se planifican y describen las pruebas necesarias para validar y verificar que el sistema cumple con los requisitos especificados.
+o	Retroalimentación y Mejora Continua: Se incluye un proceso para recoger retroalimentación y realizar mejoras continuas en el diseño del sistema.
+Esta estructura proporciona una visión comprensiva y sistemática del diseño y desarrollo del sistema utilizando Capella, asegurando que todas las fases del diseño, desde el análisis operacional hasta la implementación física, estén bien documentadas y alineadas con los objetivos del proyecto.
+Para detalles específicos, como diagramas y ejemplos visuales, se recomienda revisar directamente el archivo PDF, ya que este contiene información gráfica crucial para entender completamente el modelo.
