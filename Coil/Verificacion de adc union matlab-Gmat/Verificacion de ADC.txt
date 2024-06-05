@@ -1,0 +1,11 @@
+Verificación del ADCS en GMAT
+
+
+Una vez se tuvo construido el script que muestra la órbita 
+que debería seguir el satélite al ser lanzado y el script de MATLAB 
+con el algoritmo de control de actitud, fue posible probar este último código en
+ GMAT para verificar visual y matemáticamente que realmente el algoritmo 
+permitiera que el CubeSat siempre apunte hacia el nadir. De esta forma, se
+ lograría cumplir con todos los objetivos establecidos para esta primera parte
+ del proyecto sobre asegurar la convergencia regional y el ordenamiento 
+territorial del departamento del Cesar en Colombia.
