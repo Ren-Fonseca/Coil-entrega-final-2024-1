@@ -1,5 +1,13 @@
 Algoritmo de control de actitud
 
-El ADCS del CubeSat fue construido en el software de MATLAB teniendo en cuenta conceptos como los cuaterniones, ángulos de Euler o la ecuación del movimiento de cuerpo rígido. Desglosando un poco el algoritmo se tiene que en él hay dos controladores PID, cada uno encargado de una tarea especifica. El primero de ellos se encarga de ajustar la orientación del satélite. Esto lo logra al generar una velocidad angular deseada que debe corregir la orientación del satélite. El error se mide en términos de cuaterniones, los cuales representan la diferencia entre la orientación deseada y la orientación actual. Por ende, la entrada del lazo termina siendo un cuaternión inicial y su salida es un valor de velocidad angular que permite corregir la orientación del satélite.
+El ADCS del CubeSat fue construido en el software de MATLAB teniendo en cuenta conceptos como los cuaterniones, ángulos de Euler o la ecuación del movimiento de 
+cuerpo rígido. Desglosando un poco el algoritmo se tiene que en él hay dos controladores PID, cada uno encargado de una tarea especifica. El primero de ellos se 
+encarga de ajustar la orientación del satélite. Esto lo logra al generar una velocidad angular deseada que debe corregir la orientación del satélite. El error se 
+mide en términos de cuaterniones, los cuales representan la diferencia entre la orientación deseada y la orientación actual. Por ende, la entrada del lazo termina 
+siendo un cuaternión inicial y su salida es un valor de velocidad angular que permite corregir la orientación del satélite.
 
-El segundo controlador PID se encarga de ajustar la velocidad angular del satélite. Una vez que se ha determinado la velocidad angular deseada por el controlador explicado arriba, este controlador se encarga de hacer que la velocidad angular actual del satélite se ajuste a esta velocidad deseada. El objetivo de este lazo de control es el de aplicar los momentos adecuados (torques) para que la velocidad angular actual siga la velocidad angular deseada. Al jerarquizar el algoritmo de esta manera se permite una mejor gestión de la dinámica compleja del satélite. Asimismo, cada controlador PID puede ser ajustado independientemente para optimizar la respuesta del sistema, mejorando la estabilidad y el rendimiento general.
+El segundo controlador PID se encarga de ajustar la velocidad angular del satélite. Una vez que se ha determinado la velocidad angular deseada por el controlador 
+explicado arriba, este controlador se encarga de hacer que la velocidad angular actual del satélite se ajuste a esta velocidad deseada. El objetivo de este lazo de 
+control es el de aplicar los momentos adecuados (torques) para que la velocidad angular actual siga la velocidad angular deseada. Al jerarquizar el algoritmo de esta 
+manera se permite una mejor gestión de la dinámica compleja del satélite. Asimismo, cada controlador PID puede ser ajustado independientemente para optimizar la 
+respuesta del sistema, mejorando la estabilidad y el rendimiento general.
